@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"A World of Thanks":"Recognizing the endless commitment of teachers who make a world of difference every day."</title>
+    <link rel="shortcut icon" href="teacher5.png">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+    <style>
+        body{
+            background: linear-gradient(90deg, #cad3fc, #ddf9c3, #efee9b);
+            font-family: Book Antiqua;
+            margin-top: 100px;
+        }
+        p{
+            color: darkblue;
+        }
+    </style>
+    <script>
+        var regExp=/09\/10\/2004/;
+        function submit(){
+            document.getElementById("Date").value="";
+            document.getElementById("Details").style.display="block";
+        }
+        function verify(){
+            var date=document.getElementById("Date").value;
+            var button=document.getElementById("submitbutton");
+            if(date.match(regExp)){
+                button.disabled=false;
+            }else{
+                button.disabled=true;
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div>
+        <p><b>To help us personalize your experience and provide appropriate greetings, could you please enter your date of birth? Rest assured, your information will be kept confidential and used only for this purpose.</b></p>
+    </div>
+    <br>
+    <div class="input-group">
+        <button class="btn btn-primary"><span class="bi bi-person-fill"></span></button>
+        <input type="text" onkeyup="verify()" placeholder="Please enter your date of birth in DD/MM/YYYY format" class="form-control" id="Date">
+        <button disabled class="btn btn-warning" onclick="submit()" id="submitbutton">Submit</button>
+    </div>
+    <div style="margin-top: 20px; display: none;" id="Details">
+        <div style="text-align: center;">
+            <img src="teacher image.jpg" alt="image not found" height="300px" width="300px">
+            <p style="color: black; font-family: Monotype Corsiva; font-size: large;">"Happy Teacher's Day, B.S.N.V.Satyanarayana Sir! Your dedication, passion, and commitment to teaching inspire us every day. Thank you for being a wonderful guide and mentor!"</p>
+            <p style="color: black; font-family: Monotype Corsiva; font-size: large;">"Hello Sir, please click the button below to receive heartfelt wishes from your students!"</p>
+            <button class="btn btn-primary" onclick="clickhere()" id="button">Start</button>
+        </div>
+    </div>
+    <audio id="studentaudio" src="stu1.mp3"></audio>
+    <audio id="studentaudio1" src="stu2.mp3"></audio>
+    <audio id="studentaudio2" src="stu3.mp3"></audio>
+    <audio id="studentaudio3" src="stu4.mp3"></audio>
+    <audio id="studentaudio4" src="stu5.mp3"></audio>
+    <audio id="studentaudio5" src="stu6.mp3"></audio>
+    <audio id="studentaudio6" src="stu7.mp3"></audio>
+    <audio id="studentaudio7" src="stu8.mp3"></audio>
+    <script>
+        function clickhere() {
+            var button = document.getElementById("button");
+            var audios = [
+                document.getElementById("studentaudio2"),
+                document.getElementById("studentaudio3"),
+                document.getElementById("studentaudio4"),
+                document.getElementById("studentaudio"),
+                document.getElementById("studentaudio5"),
+                document.getElementById("studentaudio6"),
+                document.getElementById("studentaudio1"),
+                document.getElementById("studentaudio7"),
+            ];
+
+            if (button.innerHTML == "Start") {
+                button.innerHTML = "Stop";
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+                
+                function playAudioSequence(index) {
+                    if (index < audios.length) {
+                        var audio = audios[index];
+                        audio.play();
+                        audio.onended = function() {
+                            playAudioSequence(index + 1);
+                        };
+                    } else {
+                        button.innerHTML = "Start";
+                        button.style.backgroundColor = "blue";
+                        button.style.color = "white";
+                    }
+                }
+
+                playAudioSequence(0);
+
+            } else {
+                button.innerHTML = "Start";
+                button.style.backgroundColor = "blue";
+                button.style.color = "white";
+                
+                audios.forEach(function(audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                });
+            }
+        }
+    </script>
+    <script src="jquery.js"></script>
+    <script src="bootstrap.bundle.js"></script>
+</body>
+</html>
